@@ -1,0 +1,26 @@
+server:
+  http_listen_port: 3200
+  grpc_listen_port: 9096
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: system
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: varlogs
+          __path__: /var/log/*.log
+
+  - job_name: spring_boot_app_logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: spring_boot_app
+          __path__: /app/logs/log4j2.log

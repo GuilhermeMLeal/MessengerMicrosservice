@@ -1,0 +1,84 @@
+services:
+  database:
+    container_name: database
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: menssager
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+  backend:
+    container_name: web-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spring_boot_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    networks:
+      - backend
+
+  loki:
+     container_name: loki
+     image: grafana/loki:2.9.2
+     ports:
+       - "3100:3100"
+     volumes:
+       - ./observability/loki-config.yaml:/etc/loki/config.yaml
+     command: ["-config.file=/etc/loki/config.yaml"]
+     networks:
+       - backend
+
+  promtail:
+     container_name: promtail
+     image: grafana/promtail:latest
+     ports:
+       - "3200:3200"
+     volumes:
+       - ./observability/promtail-config.yaml:/etc/promtail/config.yaml
+       - ./backend/src/main/br/com/tecban/offeringweb/logs:/app/log
+     command: ["-config.file=/etc/promtail/config.yaml", "-config.expand-env=true"]
+     networks:
+       - backend
+
+  grafana:
+     container_name: grafana
+     image: grafana/grafana:latest
+     ports:
+       - "3000:3000"
+     environment:
+       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+     entrypoint:
+       - sh
+       - -euc
+       - |
+         mkdir -p /etc/grafana/provisioning/datasources
+         cat <<EOF > /etc/grafana/provisioning/datasources/ds.yaml
+         apiVersion: 1
+         datasources:
+         - name: Loki
+           type: loki
+           access: proxy
+           orgId: 1
+           url: http://loki:3100
+           basicAuth: false
+           isDefault: true
+           version: 1
+           editable: false
+         EOF
+         /run.sh
+     networks:
+       - backend
+
+networks:
+  backend:
+    driver: bridge
+
+
+
