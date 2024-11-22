@@ -1,14 +1,13 @@
-package br.com.martins.menssagerMicrosservice.service.implementations;
+package br.com.martins.messengerMicrosservice.service.implementations;
 
 
-import br.com.martins.menssagerMicrosservice.entities.Product;
-import br.com.martins.menssagerMicrosservice.entities.dto.CreateProductDTO;
-import br.com.martins.menssagerMicrosservice.entities.dto.GetProductByIdDTO;
-import br.com.martins.menssagerMicrosservice.entities.dto.UpdateProductDTO;
-import br.com.martins.menssagerMicrosservice.repository.ProductRepository;
-import br.com.martins.menssagerMicrosservice.response.exceptions.EntityNotFoundException;
-import br.com.martins.menssagerMicrosservice.service.components.ProductFinder;
-import br.com.martins.menssagerMicrosservice.service.interfaces.ProductService;
+import br.com.martins.messengerMicrosservice.entities.Product;
+import br.com.martins.messengerMicrosservice.entities.dto.CreateProductDTO;
+import br.com.martins.messengerMicrosservice.entities.dto.GetProductByIdDTO;
+import br.com.martins.messengerMicrosservice.entities.dto.UpdateProductDTO;
+import br.com.martins.messengerMicrosservice.repository.ProductRepository;
+import br.com.martins.messengerMicrosservice.service.components.ProductFinder;
+import br.com.martins.messengerMicrosservice.service.interfaces.ProductService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package br.com.martins.menssagerMicrosservice.response.exceptions.message;
+package br.com.martins.messengerMicrosservice.response.exceptions.message;
 
 import java.time.Instant;
 import lombok.Getter;

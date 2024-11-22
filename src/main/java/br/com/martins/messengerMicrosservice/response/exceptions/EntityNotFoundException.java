@@ -1,4 +1,4 @@
-package br.com.martins.menssagerMicrosservice.response.exceptions;
+package br.com.martins.messengerMicrosservice.response.exceptions;
 
 import lombok.Getter;
 

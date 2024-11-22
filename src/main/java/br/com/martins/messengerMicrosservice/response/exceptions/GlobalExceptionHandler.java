@@ -1,6 +1,6 @@
-package br.com.martins.menssagerMicrosservice.response.exceptions;
+package br.com.martins.messengerMicrosservice.response.exceptions;
 
-import br.com.martins.menssagerMicrosservice.response.exceptions.message.StandardError;
+import br.com.martins.messengerMicrosservice.response.exceptions.message.StandardError;
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.Instant;
 import org.springframework.dao.InvalidDataAccessApiUsageException;

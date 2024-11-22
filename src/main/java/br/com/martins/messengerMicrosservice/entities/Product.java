@@ -1,6 +1,6 @@
-package br.com.martins.menssagerMicrosservice.entities;
+package br.com.martins.messengerMicrosservice.entities;
 
-import br.com.martins.menssagerMicrosservice.entities.dto.CreateProductDTO;
+import br.com.martins.messengerMicrosservice.entities.dto.CreateProductDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;

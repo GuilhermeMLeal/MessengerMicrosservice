@@ -1,10 +1,10 @@
-package br.com.martins.menssagerMicrosservice.controller;
+package br.com.martins.messengerMicrosservice.controller;
 
-import br.com.martins.menssagerMicrosservice.entities.Product;
-import br.com.martins.menssagerMicrosservice.entities.dto.CreateProductDTO;
-import br.com.martins.menssagerMicrosservice.entities.dto.GetProductByIdDTO;
-import br.com.martins.menssagerMicrosservice.entities.dto.UpdateProductDTO;
-import br.com.martins.menssagerMicrosservice.service.interfaces.ProductService;
+import br.com.martins.messengerMicrosservice.entities.Product;
+import br.com.martins.messengerMicrosservice.entities.dto.CreateProductDTO;
+import br.com.martins.messengerMicrosservice.entities.dto.GetProductByIdDTO;
+import br.com.martins.messengerMicrosservice.entities.dto.UpdateProductDTO;
+import br.com.martins.messengerMicrosservice.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/products")

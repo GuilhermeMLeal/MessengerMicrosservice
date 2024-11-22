@@ -1,4 +1,4 @@
-package br.com.martins.menssagerMicrosservice.response;
+package br.com.martins.messengerMicrosservice.response;
 
 import java.sql.Timestamp;
 import java.util.HashMap;

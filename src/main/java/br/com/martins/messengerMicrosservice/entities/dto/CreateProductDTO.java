@@ -1,4 +1,4 @@
-package br.com.martins.menssagerMicrosservice.entities.dto;
+package br.com.martins.messengerMicrosservice.entities.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
