@@ -11,7 +11,7 @@
 	<groupId>br.com.martins</groupId>
 	<artifactId>messegerMicrosservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>menssagerMicrosservice</name>
+	<name>MessegerMicrosservice</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

@@ -1,13 +1,13 @@
-package br.com.martins.menssagerMicrosservice;
+package br.com.martins.messengerMicrosservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MenssagerMicrosserviceApplication {
+public class MessengerMicrosserviceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MenssagerMicrosserviceApplication.class, args);
+		SpringApplication.run(MessengerMicrosserviceApplication.class, args);
 	}
 
 }
