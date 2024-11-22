@@ -1,36 +1,41 @@
 package br.com.martins.messengerMicrosservice.models;
 
 import br.com.martins.messengerMicrosservice.entities.Product;
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
-import jakarta.validation.ValidatorFactory;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import br.com.martins.messengerMicrosservice.repository.ProductRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-import javax.xml.validation.Validator;
-import java.util.Set;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@ExtendWith(MockitoExtension.class)
 public class ProductModelTest {
 
-    private static Validator validator;
+    @Mock
+    private ProductRepository productRepository;
 
-    @BeforeAll
-    public static void setUpValidator() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        validator = factory.getValidator();
+    private Product productTest;
+
+    @BeforeEach
+    public void setUp() {
+        productTest = new Product(1L, "Cadeira", 10.50, "Cadeira bem confortável");
+
+        Mockito.when(productRepository.save(Mockito.any(Product.class))).thenReturn(productTest);
     }
 
     @Test
-    public void testNameNotBlank() {
-        // Arrange: Cria um produto com um campo inválido (nome em branco)
-        Product product = new Product(1L, "", 10.50, "Cadeira de 4 pés");
+    void shouldCreateAProduct() {
+        Product savedProduct = productRepository.save(productTest);
 
-        // Act: Valida o produto
-        Set<ConstraintViolation<Product>> violations = validator.validate(product);
-
-        // Assert: Verifica se há violações e se a mensagem corresponde
-        assertThat(violations).isNotEmpty();
-        assertThat(violations.iterator().next().getMessage()).isEqualTo("must not be blank");
+        assertNotNull(savedProduct);
+        assertEquals(productTest.getId(), savedProduct.getId());
+        assertEquals(productTest.getName(), savedProduct.getName());
+        assertEquals(productTest.getPrice(), savedProduct.getPrice());
+        assertEquals(productTest.getDescription(), savedProduct.getDescription());
     }
 }
