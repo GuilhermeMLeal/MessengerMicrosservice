@@ -75,6 +75,24 @@ services:
          /run.sh
      networks:
        - backend
+  k6:
+    container_name: k6
+    image: grafana/k6:latest
+    volumes:
+      - ./k6:/scripts
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["k6 run /scripts/test.js"]
+    networks:
+      - backend
+
+  prometheus:
+      image: prom/prometheus
+      volumes:
+        - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      ports:
+        - "9090:9090"
+      networks:
+        - backend
 
 networks:
   backend:
