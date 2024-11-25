@@ -5,19 +5,19 @@ A Messenger API é um serviço backend desenvolvido com Spring Boot que fornece 
 
 O ambiente pode ser configurado e executado facilmente usando **Docker Compose**.
 
----
+
 ## Documentação Específica:
 - [Testes Executados e sua Importância](docs/TestesExecutadosImportancia.md)
 
 
----
+
 ## **Pré-requisitos**
 
 Certifique-se de ter os seguintes itens instalados em sua máquina:
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
----
+
 
 ## **Configuração do Ambiente**
 
@@ -50,7 +50,7 @@ Certifique-se de ter os seguintes itens instalados em sua máquina:
     - **Grafana**: Acesse [http://localhost:3000](http://localhost:3000).
     - **Prometheus**: Acesse [http://localhost:9090](http://localhost:9090).
 
----
+
 
 ## **Endpoints da API**
 
@@ -67,7 +67,7 @@ Certifique-se de ter os seguintes itens instalados em sua máquina:
 | PUT    | `/products/updateProduct`   | Atualiza um produto.        | `http://localhost:8080/api/v1/products/updateProduct` |  
 | DELETE | `/products/delete`          | Remove um produto.          | `http://localhost:8080/api/v1/products/delete?id=1` |  
 
----
+
 
 ## **Monitoramento e Logs**
 
@@ -84,7 +84,7 @@ Certifique-se de ter os seguintes itens instalados em sua máquina:
 ### **3. Prometheus**
 - Ferramenta para coleta de métricas, disponível em [http://localhost:9090](http://localhost:9090).
 
----
+
 
 ## **Testes de Carga com k6**
 
@@ -102,7 +102,7 @@ Os resultados do teste de carga são exibidos diretamente no terminal do contain
 - Tempo médio de resposta.
 - Requisições por segundo (RPS).
 
----
+
 
 ## **Encerrando os Serviços**
 
