@@ -13,11 +13,11 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="br.com.martins.messengerMicrosservice" level="debug" additivity="false">
+        <Logger name="br.com.martins.messengerMicrosservice.logging" level="trace" additivity="false">
             <AppenderRef ref="ConsoleAppender" />
             <AppenderRef ref="FileAppender" />
         </Logger>
-        <Root level="debug">
+        <Root level="trace">
             <AppenderRef ref="ConsoleAppender" />
         </Root>
     </Loggers>

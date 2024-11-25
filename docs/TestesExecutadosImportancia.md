@@ -83,6 +83,11 @@ void shouldCreateAProduct() {
 ```
 **Explicação**: O teste salva um produto no repositório simulado e valida que os dados foram persistidos corretamente.
 
+### **Resultados Obtidos**
+
+Os testes apresentaram resultados excepcionais, alcançando 100% de validação em todas as funcionalidades, conforme demonstrado na imagem.
+![img.png](imgs/resultadosTestesUnitarios.png)
+
 ---
 
 ## Testes de Carga com k6
@@ -132,6 +137,9 @@ export default function () {
 - Identifica gargalos de desempenho, permitindo ajustes antes de colocar o sistema em produção.
 - Garante que a aplicação está pronta para lidar com o tráfego esperado.
 
+### **Resultados Obtidos**
+Coleta de dados e realização de testes de desempenho em tempo real com visualização no Grafana e monitoramento no Prometheus, utilizando as métricas geradas pelo K6.
+![img_1.png](imgs/GrafanaMetrics.png)
 ---
 
 ## Conclusão
