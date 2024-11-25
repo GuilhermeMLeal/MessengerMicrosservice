@@ -71,10 +71,37 @@ services:
            isDefault: true
            version: 1
            editable: false
+         - name: Prometheus
+           type: prometheus
+           access: proxy
+           orgId: 1
+           url: http://prometheus:9090
+           basicAuth: false
+           isDefault: false
+           version: 1
+           editable: false
          EOF
          /run.sh
      networks:
        - backend
+  k6:
+    container_name: k6
+    image: grafana/k6:latest
+    volumes:
+      - ./k6:/scripts
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["k6 run /scripts/request_test_list_products.js"]
+    networks:
+      - backend
+
+  prometheus:
+      image: prom/prometheus
+      volumes:
+        - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      ports:
+        - "9090:9090"
+      networks:
+        - backend
 
 networks:
   backend:

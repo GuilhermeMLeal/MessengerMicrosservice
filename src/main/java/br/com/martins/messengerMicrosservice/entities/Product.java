@@ -8,10 +8,12 @@ import jakarta.persistence.Column;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "products")
@@ -24,13 +26,13 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotBlank
     @Column(nullable = false, length = 100)
     private String name;
-
+    @NotNull
     @Column(nullable = false)
     private Double price;
-
+    @NotBlank
     @Column(length = 255)
     private String description;
 
