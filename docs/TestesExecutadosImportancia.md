@@ -2,7 +2,6 @@
 
 Esta documentação descreve a abordagem adotada para os testes realizados na API do projeto, destacando a importância, os objetivos e a execução dos testes unitários e de carga. Além disso, inclui exemplos e explicações detalhadas para garantir um entendimento completo.
 
----
 
 ## Testes Unitários
 
@@ -41,7 +40,7 @@ void shouldGetAllProducts() throws Exception {
 ```
 **Explicação**: Simula uma requisição HTTP para listar produtos e verifica se a resposta contém os dados esperados, validando o funcionamento do endpoint.
 
----
+
 
 #### **2. Testes de Serviços (`ProductServiceTest`)**
 Estes testes avaliam a lógica de negócios implementada nos serviços da aplicação.
@@ -66,7 +65,7 @@ void shouldCreateProduct() {
 ```
 **Explicação**: Este teste cria um produto a partir de um DTO, verifica se os dados foram mapeados corretamente e garante que o serviço chamou o repositório para salvar o produto.
 
----
+
 
 #### **3. Testes de Modelos (`ProductModelTest`)**
 Estes testes validam a interação com o banco de dados, garantindo que as operações de persistência sejam realizadas corretamente.
@@ -85,10 +84,11 @@ void shouldCreateAProduct() {
 
 ### **Resultados Obtidos**
 
-Os testes apresentaram resultados excepcionais, alcançando 100% de validação em todas as funcionalidades, conforme demonstrado na imagem.
+Os testes apresentaram resultados excepcionais, alcançando 100% de validação em todas as funcionalidades, conforme demonstrado na imagem.  
+
 ![img.png](imgs/resultadosTestesUnitarios.png)
 
----
+
 
 ## Testes de Carga com k6
 
@@ -138,7 +138,9 @@ export default function () {
 - Garante que a aplicação está pronta para lidar com o tráfego esperado.
 
 ### **Resultados Obtidos**
-Coleta de dados e realização de testes de desempenho em tempo real com visualização no Grafana e monitoramento no Prometheus, utilizando as métricas geradas pelo K6.
+
+- Coleta de dados e realização de testes de desempenho em tempo real com visualização no Grafana e monitoramento no Prometheus, utilizando as métricas geradas pelo K6.
+
 ![img_1.png](imgs/GrafanaMetrics.png)
 ---
 
