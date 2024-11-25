@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" monitorInterval="30">
     <Appenders>
-        <RollingFile name="FileAppender" fileName="/app/logs/log4j2.log"
-                     filePattern="/app/logs/app-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="FileAppender" fileName="./logs/log4j2.log"
+                     filePattern="./logs/app-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] level=%-5level %logger{36} - %message%n"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="50 MB"/>
@@ -14,11 +13,11 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="br.com.martins.menssagerMicrosservice" level="trace" additivity="false">
+        <Logger name="br.com.martins.messengerMicrosservice.logging" level="trace" additivity="false">
             <AppenderRef ref="ConsoleAppender" />
             <AppenderRef ref="FileAppender" />
         </Logger>
-        <Root level="info">
+        <Root level="trace">
             <AppenderRef ref="ConsoleAppender" />
         </Root>
     </Loggers>

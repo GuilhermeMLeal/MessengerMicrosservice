@@ -1,18 +1,18 @@
 services:
-  database:
-    container_name: database
+  db:
+    container_name: db
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: menssager
+      POSTGRES_DB: messenger
     ports:
       - "5432:5432"
     networks:
       - backend
 
   backend:
-    container_name: web-api
+    container_name: api
     build:
       context: .
       dockerfile: Dockerfile
@@ -20,7 +20,7 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - database
+      - db
     networks:
       - backend
 
@@ -42,7 +42,7 @@ services:
        - "3200:3200"
      volumes:
        - ./observability/promtail-config.yaml:/etc/promtail/config.yaml
-       - ./backend/src/main/br/com/tecban/offeringweb/logs:/app/log
+       - ./src/main/br/com/martins/messengerMicrosservice/logs:/app/log
      command: ["-config.file=/etc/promtail/config.yaml", "-config.expand-env=true"]
      networks:
        - backend
@@ -71,10 +71,37 @@ services:
            isDefault: true
            version: 1
            editable: false
+         - name: Prometheus
+           type: prometheus
+           access: proxy
+           orgId: 1
+           url: http://prometheus:9090
+           basicAuth: false
+           isDefault: false
+           version: 1
+           editable: false
          EOF
          /run.sh
      networks:
        - backend
+  k6:
+    container_name: k6
+    image: grafana/k6:latest
+    volumes:
+      - ./k6:/scripts
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["k6 run /scripts/request_test_list_products.js"]
+    networks:
+      - backend
+
+  prometheus:
+      image: prom/prometheus
+      volumes:
+        - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      ports:
+        - "9090:9090"
+      networks:
+        - backend
 
 networks:
   backend:
